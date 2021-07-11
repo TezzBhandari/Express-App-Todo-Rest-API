@@ -1,0 +1,19 @@
+{
+  "name": "todo",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon ./bin/www"
+  },
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "debug": "^4.3.2",
+    "express": "^4.17.1",
+    "http-errors": "^1.7.2",
+    "mongoose": "^5.13.2",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
