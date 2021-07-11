@@ -2,13 +2,13 @@ const createError = require('http-errors');
 const express = require('express');
 const logger = require('morgan');
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+dotenv.config();
 
 const router = require('./routes/todo_route');
 
-// const Bluebird = require('bluebird');
-// mongoose.Promise = Bluebird;
-
-const URI = `mongodb+srv://TezzBhandari:Cristiano18@@todo.ogpgv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+const URI = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@todo.ogpgv.mongodb.net/todos?retryWrites=true&w=majority`;
+console.log(URI);
 
 const connectDB = async (req, res, next) => {
   try {
