@@ -27,17 +27,17 @@ const addTask = async (req, res, next) => {
       next(createError(500, `Internal Server Error`));
     }
   } catch (err) {
-    const result = next(err);
+    next(err);
   }
 };
 
 const deleteAllTasks = async (req, res, next) => {
   try {
-    const result = await Todo.deleteMany().exec();
+    const result = await Todo.deleteMany(req.body).exec();
     if (result != null) {
       res.status(200).json({
         success: true,
-        message: `Successfully Deleted all the task`,
+        message: `Successfully deleted all tasks`,
         response: result,
       });
     } else {
@@ -48,8 +48,4 @@ const deleteAllTasks = async (req, res, next) => {
   }
 };
 
-module.exports = {
-  getAllTasks,
-  addTask,
-  deleteAllTasks,
-};
+module.exports = { getAllTasks, addTask, deleteAllTasks };
