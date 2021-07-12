@@ -104,7 +104,7 @@ const updateTask = async (req, res, next) => {
 
 const deleteTask = async (req, res, next) => {
   try {
-    const result = await Todo.findByIdAndRemove(req.params.taskId);
+    const result = await Todo.findByIdAndDelete(req.params.taskId);
     if (result === null) {
       return res.status(200).json({
         success: true,
