@@ -6,6 +6,9 @@ const {
   getAllTasks,
   addTask,
   deleteAllTasks,
+  getTask,
+  updateTask,
+  deleteTask,
 } = require('../controllers/todo_op');
 
 router
@@ -22,14 +25,14 @@ router
 
 router
   .route('/:taskId')
-  .get()
+  .get(getTask)
   .post(async (req, res, next) => {
     res.status(405).json({
       success: false,
       message: `POST Operation is not supported on this route`,
     });
   })
-  .put()
-  .delete();
+  .put(updateTask)
+  .delete(deleteTask);
 
 module.exports = router;
