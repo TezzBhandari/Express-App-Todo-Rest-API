@@ -17,15 +17,11 @@ const getAllTasks = async (req, res, next) => {
 const addTask = async (req, res, next) => {
   try {
     const result = await Todo.create(req.body);
-    if (result != null) {
-      res.status(201).json({
-        success: true,
-        message: `Successfully created the task`,
-        response: result,
-      });
-    } else {
-      next(createError(500, `Internal Server Error`));
-    }
+    res.status(201).json({
+      success: true,
+      message: `Successfully created the task`,
+      response: result,
+    });
   } catch (err) {
     next(err);
   }
@@ -33,16 +29,12 @@ const addTask = async (req, res, next) => {
 
 const deleteAllTasks = async (req, res, next) => {
   try {
-    const result = await Todo.deleteMany(req.body).exec();
-    if (result != null) {
-      res.status(200).json({
-        success: true,
-        message: `Successfully deleted all tasks`,
-        response: result,
-      });
-    } else {
-      next(createError(500, `Internal Server Error`));
-    }
+    const result = await Todo.deleteMany().exec();
+    res.status(200).json({
+      success: true,
+      message: `Successfully deleted all tasks`,
+      response: result,
+    });
   } catch (err) {
     next(err);
   }

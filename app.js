@@ -8,8 +8,6 @@ dotenv.config();
 const router = require('./routes/todo_route');
 
 const URI = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@todo.ogpgv.mongodb.net/todos?retryWrites=true&w=majority`;
-console.log(URI);
-
 const connectDB = async (req, res, next) => {
   try {
     const connect = await mongoose.connect(URI, {
